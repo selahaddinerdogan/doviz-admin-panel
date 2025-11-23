@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "functions.php";
+require_once __DIR__ ."/../functions/kullaniciFunctions.php";
 
 // Giriş yapılmamışsa login sayfasına yönlendir
 if (!isset($_SESSION['kullanici_id'])) {
@@ -9,11 +9,10 @@ if (!isset($_SESSION['kullanici_id'])) {
     exit;
 }
 
-$kurlar = [];
+$kullanicilar = [];
 if ($_SESSION['admin'] == 1) {
-    $kurlar = kurlariGetir();
+    $kullanicilar = kullanicilariGetir();
 }
-
 
 ?>
 
@@ -25,30 +24,30 @@ if ($_SESSION['admin'] == 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Döviz Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../../assets/vendors/font-awesome/css/font-awesome.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../../../assets/images/favicon.png" />
 </head>
 <body>
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
-    <?php include 'dashboard/sidebar.php'; ?>
+    <?php include '../dashboard/sidebar.php'; ?>
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
 
         <!-- partial:../../partials/_navbar.html -->
-        <?php include 'dashboard/navbar.php'; ?>
+        <?php include '../dashboard/navbar.php'; ?>
 
         <!-- partial -->
         <div class="main-panel">
@@ -66,19 +65,25 @@ if ($_SESSION['admin'] == 1) {
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>İd</th>
-                                            <th>Kod</th>
+                                            <th>Kullanıcı Adı</th>
                                             <th>Adı</th>
-                                            <th>Tarih</th>
+                                            <th>Soyadı</th>
+                                            <th>Email</th>
+                                            <th>Adres</th>
+                                            <th>Rol</th>
+                                            <th>Kayıt Tarihi</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($kurlar as $k): ?>
+                                        <?php foreach ($kullanicilar as $k): ?>
                                         <tr>
-                                            <td><?php echo htmlspecialchars($k['id']); ?></td>
-                                            <td><?php echo htmlspecialchars($k['kod']); ?></td>
+                                            <td><?php echo htmlspecialchars($k['kullanici_adi']); ?></td>
                                             <td><?php echo htmlspecialchars($k['adi']); ?></td>
-                                            <td><?php echo $k['tarih']; ?></td>
+                                            <td><?php echo htmlspecialchars($k['soyadi']); ?></td>
+                                            <td><?php echo htmlspecialchars($k['mail']); ?></td>
+                                            <td><?php echo htmlspecialchars($k['adres']); ?></td>
+                                            <td><?php echo $k['admin'] ? "<label class='badge badge-success'>Yönetici</label>" : "<label class='badge badge-info'>Kullanıcı</label>"; ?></td>
+                                            <td><?php echo $k['kayit tarih']; ?></td>
 <!--                                            <td><label class="badge badge-danger">Pending</label></td>-->
                                         </tr>
                                         <?php endforeach; ?>
@@ -106,15 +111,15 @@ if ($_SESSION['admin'] == 1) {
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../../assets/js/off-canvas.js"></script>
-<script src="../../assets/js/misc.js"></script>
-<script src="../../assets/js/settings.js"></script>
-<script src="../../assets/js/todolist.js"></script>
+<script src="../../../assets/js/off-canvas.js"></script>
+<script src="../../../assets/js/misc.js"></script>
+<script src="../../../assets/js/settings.js"></script>
+<script src="../../../assets/js/todolist.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <!-- End custom js for this page -->

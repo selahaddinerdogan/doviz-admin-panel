@@ -1,5 +1,5 @@
 <?php
-    require_once "functions.php";
+    require_once __DIR__ ."/../functions/kullaniciFunctions.php";
     session_start();
 
     $kullanici_adi = $_POST['kullanici_adi'];

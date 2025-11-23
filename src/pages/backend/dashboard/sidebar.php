@@ -63,7 +63,7 @@
             <span class="nav-link">Navigation</span>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="dashboard.php">
+            <a class="nav-link" href="../dashboard/dashboard.php">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -71,7 +71,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="kullanicilar.php">
+            <a class="nav-link" href="../kullanici/kullanicilar.php">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
@@ -80,20 +80,40 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-kur" aria-expanded="false" aria-controls="ui-kur">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-                <span class="menu-title">Dövizler</span>
+                <span class="menu-title">Kurlar</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="ui-kur">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="kur.php">Dövizler</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Fiyat Gir</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../kur/kurEkle.php">Kur Ekle</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../kur/kurlar.php">Kur Listesi</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../kur/kurFiyatlar.php">Fiyatlar</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../kur/fiyatGir.php">Fiyat Gir</a></li>
                 </ul>
             </div>
         </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-altin" aria-expanded="false" aria-controls="ui-altin">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                <span class="menu-title">Altın</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-altin">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="../altin/altinEkle.php">Altın Ekle</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../altin/altinlar.php">Altın Listesi</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../altin/altinFiyatlar.php">Fiyatlar</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="../altin/fiyatGir.php">Fiyat Gir</a></li>
+                </ul>
+            </div>
+        </li>
+
     </ul>
 </nav>
 
