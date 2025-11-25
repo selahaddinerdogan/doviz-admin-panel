@@ -15,7 +15,7 @@
         $_SESSION['admin']          = $kullanici['admin'];
 
         // Giriş başarılı → admin paneline yönlendir
-        header("Location: dashboard.php");
+        header("Location: ../dashboard/dashboard.php");
         exit;
     } else {
         echo "Kullanıcı adı veya şifre hatalı.";

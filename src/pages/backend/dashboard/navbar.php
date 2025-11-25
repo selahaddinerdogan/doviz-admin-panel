@@ -28,7 +28,7 @@ if (!isset($_SESSION['kullanici_id'])) {
                     <h6 class="p-3 mb-0">Profil</h6>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item"  href="cikis.php">
+                    <a class="dropdown-item preview-item"  href="../kullanici/cikis.php">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="mdi mdi-logout text-danger"></i>
