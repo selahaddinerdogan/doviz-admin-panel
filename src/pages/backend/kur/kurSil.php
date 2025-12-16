@@ -17,10 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $id = $_POST['id'];
 
-    if (kurSil($id)) {
+    if ((KurSil$id)) {
         header("Location: altinlar.php");
     } else {
         echo "Silme sırasında hata oluştu!";
     }
 }
-?>
+?

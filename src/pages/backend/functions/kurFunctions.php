@@ -90,8 +90,8 @@ function kurFiyatEkle($kur_id, $alis, $satis)
     global $conn;
 
     $kur_id = intval($kur_id);
-    $alis   = floatval($alis);
-    $satis  = floatval($satis);
+    $alis = floatval($alis);
+    $satis = floatval($satis);
 
     $tarih = date("Y-m-d H:i:s");
 
@@ -104,7 +104,8 @@ function kurFiyatEkle($kur_id, $alis, $satis)
     return false;
 }
 
-function tumKurFiyatListesi() {
+function tumKurFiyatListesi()
+{
     global $conn;
 
     $sql = "
@@ -140,5 +141,112 @@ function tumKurFiyatListesi() {
     return $data;
 }
 
+function getKurListesiSonFiyatlar()
+{
+    global $conn;
+    $sql = "
+        SELECT 
+            k.id,
+            k.kod,
+            k.adi,
+            f.alis,
+            f.satis,
+            f.tarih AS fiyat_tarih
+        FROM kur k
+        LEFT JOIN kur_fiyat f
+            ON f.id = (
+                SELECT id 
+                FROM kur_fiyat 
+                WHERE kur_id = k.id
+                ORDER BY tarih DESC 
+                LIMIT 1
+            )
+        ORDER BY k.kod ASC
+    ";
 
+    $result = $conn->query($sql);
+
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    }
+
+    return $data;
+}
+
+function getKurListesiDegisimOrani()
+{
+    global $conn;
+    $sql = "
+        SELECT 
+            k.id,
+            k.kod,
+            k.adi,
+
+            -- Son fiyat
+            f1.alis AS son_alis,
+            f1.satis AS son_satis,
+            f1.tarih AS son_tarih,
+
+            -- Önceki fiyat
+            f2.satis AS onceki_satis
+
+        FROM kur k
+
+        LEFT JOIN kur_fiyat f1
+            ON f1.id = (
+                SELECT id FROM kur_fiyat
+                WHERE kur_id = k.id
+                ORDER BY tarih DESC
+                LIMIT 1
+            )
+
+        LEFT JOIN kur_fiyat f2
+            ON f2.id = (
+                SELECT id FROM kur_fiyat
+                WHERE kur_id = k.id
+                AND tarih < (
+                    SELECT tarih FROM kur_fiyat
+                    WHERE kur_id = k.id
+                    ORDER BY tarih DESC
+                    LIMIT 1
+                )
+                ORDER BY tarih DESC
+                LIMIT 1
+            )
+        WHERE k.kod in ('EUR', 'USD', 'CHF', 'GBP')
+        ORDER BY k.kod DESC
+    ";
+
+    $result = $conn->query($sql);
+    $data = [];
+
+    while ($row = $result->fetch_assoc()) {
+
+        // Değişim oranı hesaplama
+        if (!is_null($row['onceki_satis']) && $row['onceki_satis'] > 0) {
+            $degisim = (($row['son_satis'] - $row['onceki_satis']) / $row['onceki_satis']) * 100;
+        } else {
+            $degisim = null;
+        }
+
+        $row['degisim_orani'] = number_format($degisim, 2);
+        $data[] = $row;
+    }
+
+    return $data;
+}
+function getToplamKur()
+{
+    global $conn;
+
+    $sql = "SELECT COUNT(*) AS toplam FROM kur";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    return $row['toplam'];
+}
 ?>
