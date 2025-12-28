@@ -5,7 +5,7 @@ require_once __DIR__ . "/../backend/functions/kurFunctions.php";
 
 // Giriş yapılmamışsa login sayfasına yönlendir
 if (!isset($_SESSION['kullanici_id'])) {
-    header("Location: ../samples/login.html");
+    header("Location: ../login.html");
     exit;
 }
 
