@@ -177,7 +177,69 @@ function getListesiDegisimOrani()
                 ORDER BY tarih DESC
                 LIMIT 1
             )
-        WHERE a.adi in ('Ons Altın', 'Gram Altın', 'Tam Altın')
+        WHERE a.adi in ('Ons Altın', 'Gram Altın', 'Tam altın')
+        ORDER BY a.id ASC
+    ";
+
+    $result = $conn->query($sql);
+    $data = [];
+
+    while ($row = $result->fetch_assoc()) {
+
+        if (!is_null($row['onceki_satis']) && $row['onceki_satis'] > 0) {
+            $degisim = (($row['son_satis'] - $row['onceki_satis']) / $row['onceki_satis']) * 100;
+        } else {
+            $degisim = null;
+        }
+
+        $row['degisim_orani'] = number_format($degisim, 2);
+        $data[] = $row;
+    }
+
+    return $data;
+}
+function getTumListesiDegisimOrani()
+{
+    global $conn;
+    $sql = "
+        SELECT 
+            a.id,
+            a.adi,
+
+            -- Son fiyat
+            f1.alis AS son_alis,
+            f1.satis AS son_satis,
+            f1.tarih AS son_tarih,
+
+            -- Önceki fiyat
+            f2.satis AS onceki_satis
+
+        FROM altin a
+
+        LEFT JOIN altin_fiyat f1
+            ON f1.id = (
+                SELECT id 
+                FROM altin_fiyat
+                WHERE altin_id = a.id
+                ORDER BY tarih DESC
+                LIMIT 1
+            )
+
+        LEFT JOIN altin_fiyat f2
+            ON f2.id = (
+                SELECT id 
+                FROM altin_fiyat
+                WHERE altin_id = a.id
+                AND tarih < (
+                    SELECT tarih 
+                    FROM altin_fiyat
+                    WHERE altin_id = a.id
+                    ORDER BY tarih DESC
+                    LIMIT 1
+                )
+                ORDER BY tarih DESC
+                LIMIT 1
+            )
         ORDER BY a.id ASC
     ";
 

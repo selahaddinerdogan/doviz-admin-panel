@@ -53,6 +53,7 @@ $kurSayisi   = getToplamKur();
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
+
                 <div class="row">
                     <?php if (count($altinDegisimOrani) > 0): ?>
                         <?php foreach ($altinDegisimOrani as $altin): ?>
@@ -69,8 +70,7 @@ $kurSayisi   = getToplamKur();
                                                             +<?= $altin['degisim_orani'] ?>%</p>
                                                     <?php endif; ?>
                                                     <?php if ($altin['degisim_orani'] < 0): ?>
-                                                        <p class="text-danger ms-2 mb-0 font-weight-medium"><?= $altin['degisim_orani'] ?>
-                                                            %</p>
+                                                        <p class="text-danger ms-2 mb-0 font-weight-medium"><?= $altin['degisim_orani'] ?>%</p>
                                                     <?php endif; ?>
                                                 </div>
                                                 <h6 class="text-muted font-weight-normal"><?= $altin['adi'] ?> Son fiyat
@@ -128,6 +128,7 @@ $kurSayisi   = getToplamKur();
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
@@ -140,6 +141,7 @@ $kurSayisi   = getToplamKur();
                         </div>
                     </div>
                 </div>
+
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
@@ -160,7 +162,7 @@ $kurSayisi   = getToplamKur();
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="../../../assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="../../assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="../../../assets/vendors/progressbar.js/progressbar.min.js"></script>
     <script src="../../../assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="../../../assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="../../../assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
@@ -185,10 +187,10 @@ $kurSayisi   = getToplamKur();
         };
         const doughnutPieData = {
             datasets: [{
-                data: ['<?=$altinSayisi?>', '<?=$kurSayisi?>'],
+                data: ['<?=$altinSayisi?>', '<?=$kurSayisi?>' ,5],
                 backgroundColor: [
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(234,189,11,0.5)',
+                    'rgba(17,193,193,0.5)',
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(75, 192, 192, 0.5)',
                     'rgba(153, 102, 255, 0.5)',
@@ -208,6 +210,9 @@ $kurSayisi   = getToplamKur();
             labels: [
                 'Altın',
                 'Kur',
+                'emtia'
+
+
             ]
         };
         if ($("#totalDataChart").length) {
