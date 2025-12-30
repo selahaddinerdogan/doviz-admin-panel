@@ -71,6 +71,14 @@
             </a>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" href="../../frontend/index.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+                <span class="menu-title">Anasayfa</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
             <a class="nav-link" href="../kullanici/kullanicilar.php">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
@@ -112,6 +120,15 @@
                     <li class="nav-item"> <a class="nav-link" href="../altin/fiyatGir.php">Fiyat Gir</a></li>
                 </ul>
             </div>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="../sirket/sirket.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+                <span class="menu-title">Şirket</span>
+            </a>
         </li>
 
     </ul>
