@@ -142,7 +142,6 @@ $kurlar = getTumKurListesiDegisimOrani();
 <!-- ====== Back To Top End -->
 
 
-
 <!-- ====== All Scripts -->
 <script src="assets/js/main.js"></script>
 </body>

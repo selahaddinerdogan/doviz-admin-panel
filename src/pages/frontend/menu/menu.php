@@ -107,7 +107,7 @@
                         <div
                                 class="absolute right-0 top-full mt-2 w-40 rounded-md bg-white dark:bg-dark-2 shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all"
                         >
-                            <?php if ($_SESSION['admin']==1): ?>
+                            <?php if ($_SESSION['admin'] == 1): ?>
                                 <a
                                         href="../backend/dashboard/dashboard.php"
                                         class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-dark-3 rounded-md"
@@ -142,8 +142,6 @@
 
                     <?php endif; ?>
                 </div>
-
-
 
 
             </div>
