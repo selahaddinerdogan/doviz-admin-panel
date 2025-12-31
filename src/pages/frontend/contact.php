@@ -73,7 +73,12 @@ $sirket = sirketGetir();
                              Bizimle İletişime geçmek ister misiniz? </br>
 
                           </h2>
+                          <br>
+                          <h2
+                                  class="max-w-[500px] text-[25px] leading-[1.14] font-semibold text-dark dark:text-white"
+                          >
                           <?= isset($sirket['telefon']) ? $sirket['telefon'] : '' ?>
+                          </h2>
                       </div>
                       <div class="flex flex-wrap justify-between mb-12 lg:mb-0">
                           <div class="mb-8 flex w-[330px] max-w-full">
