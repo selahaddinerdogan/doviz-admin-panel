@@ -87,7 +87,8 @@ $sirket = sirketGetir();
                         <h2
                                 class="mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]"
                         >
-                        <span class="text-xl font-medium">                                    <?= $kur['kod'] == "USD" ? "$" :
+                        <span class="text-xl font-medium">
+                            <?= $kur['kod'] == "USD" ? "$" :
                                     ($kur['kod'] == "EUR" ? "€" :
                                             ($kur['kod'] == "GBP" ? "£" :
                                                     ($kur['kod'] == "CHF" ? "CHF" : "")))

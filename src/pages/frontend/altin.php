@@ -8,7 +8,6 @@ if (!isset($_SESSION['kullanici_id'])) {
     header("Location: ../frontend/login.html");
     exit;
 }
-
 $altinDegisimOrani = getTumListesiDegisimOrani();
 ?>
 
