@@ -14,8 +14,12 @@
         $_SESSION['soyadi']         = $kullanici['soyadi'];
         $_SESSION['admin']          = $kullanici['admin'];
 
-        // Giriş başarılı → admin paneline yönlendir
-        header("Location: ../dashboard/dashboard.php");
+        if($kullanici['admin'] == 1) {
+            // Giriş başarılı → admin paneline yönlendir
+            header("Location: ../dashboard/dashboard.php");
+        }else{
+            header("Location: ../../frontend/index.php");
+        }
         exit;
     } else {
         echo "Kullanıcı adı veya şifre hatalı.";
